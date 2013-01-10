@@ -14,14 +14,15 @@ License: GPLv2 or later
 
 function tnibs_button_shortcode( $atts ) {
   $defaults = array(
-    'button' => '',
+    'text' => 'Click Here',
     'color' => 'yellow',
-    'link' => '',
+    'link' => '#',
     'class' => ''
   );
   $attr = shortcode_atts( $defaults, $atts );
 
-  $output = '<div class="button-' . strtolower( $attr['color'] ) . ' ' . esc_attr( $attr['class'] ) . '"><a href="' . esc_attr( $attr['link'] ) . '">' . $attr['button'] . '</a></div>';
+  // $output = '<div class="button-' . strtolower( $attr['color'] ) . ' ' . esc_attr( $attr['class'] ) . '"><a href="' . esc_attr( $attr['link'] ) . '">' . $attr['button'] . '</a></div>';
+  $output = '<div class="button-' . strtolower( esc_attr( $attr['color'] ) ) . ' ' . esc_attr( $attr['class'] ) . '"><a href="' . esc_attr( $attr['link'] ) . '" title="' . esc_attr( $attr['text'] ) . '" ><span>' . esc_attr( $attr['text'] ) . '</span></a></div>';
 
   return $output;
 }
